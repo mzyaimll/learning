@@ -1,0 +1,37 @@
+<!--
+ * @Autor: GeekMzy
+ * @Date: 2021-06-23 09:45:44
+ * @LastEditors: GeekMzy
+ * @LastEditTime: 2021-06-24 11:15:35
+ * @FilePath: \test\36js\11.实现instanceof关键字.html
+-->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+
+  <div id="res">
+
+  </div>
+  <script>
+    function instanceOf(left, right) {
+      let proto = left.__proto__
+      while (true) {
+        if (proto === null) return false
+        if (proto === right.prototype) {
+          return true
+        }
+        proto = proto.__proto__
+      }
+    }
+  </script>
+</body>
+
+</html>

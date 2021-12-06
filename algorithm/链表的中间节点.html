@@ -1,0 +1,25 @@
+/**
+* Definition for singly-linked list.
+* function ListNode(val) {
+* this.val = val;
+* this.next = null;
+* }
+*/
+/**
+* @param {ListNode} head
+* @return {ListNode}
+*/
+var middleNode = function(head) {
+let i = 0
+let rsNode = head
+while(head) {
+i++
+head && (head = head.next)
+}
+let z = i % 2 == 1 ?Math.floor(i/2) :Math.ceil(i/2)
+while(z > 0) {
+z--
+rsNode && (rsNode = rsNode.next)
+}
+return rsNode
+};

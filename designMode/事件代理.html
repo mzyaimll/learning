@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <div id="father">
+    <a id="child">123123</a>
+    <span>2345</span>
+  </div>
+
+  <script>
+    const father = document.getElementById("father")
+    father.addEventListener('click', function (e) {
+      console.log(e);
+      if (e.target.tagName === 'A') {
+        e.preventDefault()
+        alert('这是子元素的点击事件' + e.target.value)
+      }
+    })
+  </script>
+</body>
+
+</html>

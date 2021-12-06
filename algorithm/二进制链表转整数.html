@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+    <script>
+        /**
+ * Definition for singly-linked list.
+ * function ListNode(val) {
+ *     this.val = val;
+ *     this.next = null;
+ * }
+ */
+/**
+ * @param {ListNode} head
+ * @return {number}
+ */
+var getDecimalValue = function(head) {
+        let sum = 0
+        let log = 1
+        t(head)
+        function t(n) {
+            if(n)
+            { 
+                t(n.next)
+                sum += n.val * log
+                log *= 2
+            }
+        } 
+        return sum
+};
+    </script>
+</body>
+
+</html>

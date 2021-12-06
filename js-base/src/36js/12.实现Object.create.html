@@ -1,0 +1,62 @@
+<!--
+ * @Autor: GeekMzy
+ * @Date: 2021-06-23 09:45:45
+ * @LastEditors: GeekMzy
+ * @LastEditTime: 2021-06-24 11:25:14
+ * @FilePath: \test\36js\12.实现Object.create.html
+-->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+
+  <div id="res">
+
+  </div>
+  <script>
+    Object.create2 = function (proto, propertyObject = undefined) {
+      if (typeof proto !== 'object' && typeof proto !== 'function') {
+        throw new TypeError('Object prototype may only be an Object or null.')
+        if (propertyObject == null) {
+          new TypeError('Cannot convert undefined or null to object')
+        }
+        function F() { }
+        F.prototype = proto
+        const obj = new F()
+        if (propertyObject != undefined) {
+          Object.defineProperties(obj, propertyObject)
+        }
+        if (proto === null) {
+          // 创建一个没有原型对象的对象，Object.create(null)
+          obj.__proto__ = null
+        }
+        return obj
+      }
+    }
+    Object.assign2 = function (target, ...source) {
+      if (target == null) {
+        throw new TypeError('Cannot convert undefined or null to object')
+      }
+      let ret = Object(target)
+      source.forEach(function (obj) {
+        if (obj != null) {
+          for (let key in obj) {
+            if (obj.hasOwnProperty(key)) {
+              ret[key] = obj[key]
+            }
+          }
+        }
+      })
+      return ret
+    }
+  </script>
+</body>
+
+</html>

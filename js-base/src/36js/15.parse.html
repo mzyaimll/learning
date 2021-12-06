@@ -1,0 +1,45 @@
+<!--
+ * @Autor: GeekMzy
+ * @Date: 2021-06-23 09:45:45
+ * @LastEditors: GeekMzy
+ * @LastEditTime: 2021-06-24 14:58:19
+ * @FilePath: \test\36js\15.parse.html
+-->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+
+  <div id="res">
+
+  </div>
+  <script>
+    var json = '{"a":"1", "b":2}';
+    var obj = eval("(" + json + ")");  // obj 就是 json 反序列化之后得到的对象
+
+    var rx_one = /^[\],:{}\s]*$/;
+    var rx_two = /\\(?:["\\\/bfnrt]|u[0-9a-fA-F]{4})/g;
+    var rx_three = /"[^"\\\n\r]*"|true|false|null|-?\d+(?:\.\d*)?(?:[eE][+\-]?\d+)?/g;
+    var rx_four = /(?:^|:|,)(?:\s*\[)+/g;
+
+    if (
+      rx_one.test(
+        json.replace(rx_two, "@")
+          .replace(rx_three, "]")
+          .replace(rx_four, "")
+      )
+    ) {
+      var obj = eval("(" + json + ")");
+    }
+
+  </script>
+</body>
+
+</html>

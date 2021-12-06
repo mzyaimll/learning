@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+
+
+  <script>
+    /**
+ * Definition for singly-linked list.
+ * function ListNode(val) {
+ *     this.val = val;
+ *     this.next = null;
+ * }
+ */
+    /**
+     * @param {ListNode} l1
+     * @param {ListNode} l2
+     * @return {ListNode}
+     */
+    function ListNode(val) {
+      this.val = val;
+      this.next = null;
+    }
+    let z = [3, 4, 2, 7]
+    let x = [4, 6, 5]
+    let newL1 = new ListNode("head")
+    let newL2 = new ListNode("head")
+
+    z.forEach(item => {
+      let node = new ListNode(item)
+      node.next = newL1.next
+      newL1.next = node
+    })
+    x.forEach(item => {
+      let node = new ListNode(item)
+      node.next = newL2.next
+      newL2.next = node
+    })
+    var addTwoNumbers = function (l1, l2) {
+      let ll1 = new ListNode("head")
+      let ll2 = new ListNode("head")
+      l1 = l1.next
+      l2 = l2.next
+      console.log(l1, l2);
+      while (l1) {
+        let zNode = new ListNode(l1.val)
+        zNode.next = ll1.next
+        ll1.next = zNode
+        l1 && (l1 = l1.next)
+      }
+      while (l2) {
+        let zNode = new ListNode(l2.val)
+        zNode.next = ll2.next
+        ll2.next = zNode
+        l2 && (l2 = l2.next)
+      }
+      ll1 = ll1.next
+      ll2 = ll2.next
+
+      let carry = 0
+      let sumNode = new ListNode("null")
+      while (ll1 || ll2) {
+        let sum = (ll1 ? ll1.val : 0) + (ll2 ? ll2.val : 0) + carry
+        let node = new ListNode(sum % 10)
+        node.next = sumNode.next
+        sumNode.next = node
+        carry = sum >= 10 ? 1 : 0
+        ll1 && (ll1 = ll1.next)
+        ll2 && (ll2 = ll2.next)
+      }
+      if (carry) {
+        let carryNode = new ListNode(carry)
+        carryNode.next = sumNode.next
+        sumNode.next = carryNode
+      }
+      return sumNode
+    };
+    console.log(addTwoNumbers(newL1, newL2));
+  </script>
+</body>
+
+</html>

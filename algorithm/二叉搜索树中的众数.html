@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+
+
+    <script>
+        /**
+ * Definition for a binary tree node.
+ * function TreeNode(val) {
+ *     this.val = val;
+ *     this.left = this.right = null;
+ * }
+ */
+        /**
+         * @param {TreeNode} root
+         * @return {number[]}
+         */
+        var findMode = function (root) {
+            let result = {}
+            if(root.left) {
+                result[root.left.val] ? result[root.left.val] = 0 : result[root.left.val] += 1
+                findMode(root.left)
+            }
+            if(root.right) {
+                result[root.right.val] ? result[root.right.val] = 0 : result[root.right.val] += 1
+                findMode(root.right)
+            }
+            
+            // let arr = Object.keys(result);
+            // if(arr) {
+            //     let max = result[arr[0]];
+            //     arr.forEach(item => {
+            //         if(max < result[item]) max = result[item]
+            //     })
+            // }
+            // return 
+        };
+    </script>
+</body>
+
+</html>

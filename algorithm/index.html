@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+
+
+    <script>
+        /**
+        * Definition for singly-linked list.
+        * function ListNode(val) {
+        *     this.val = val;
+        *     this.next = null;
+        * }
+        */
+        /**
+         * @param {ListNode} head
+         * @return {ListNode}
+         */
+        var swapPairs = function (head) {
+            let rs = head
+            let l1 = head.next
+            let l2 = l1.next
+
+            while(l2) {
+                let la = l1
+                let lb = l2
+                l1.next = lb.next
+                l2.next = la
+                
+                l1 && (l1 = l1.next)
+                l2 && (l2 = l1.next.next)
+            }
+            return rs
+        };
+    </script>
+</body>
+
+</html>

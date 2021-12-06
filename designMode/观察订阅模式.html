@@ -1,0 +1,103 @@
+<!--
+ * @Author: your name
+ * @Date: 2020-12-17 11:18:51
+ * @LastEditTime: 2020-12-17 11:45:56
+ * @LastEditors: Please set LastEditors
+ * @Description: In User Settings Edit
+ * @FilePath: \project\designMode\观察订阅模式.html
+-->
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+
+
+  <script>
+    /**
+     * @description: 观察订阅者模式，观察者
+     * @param {*}
+     * @return {*}
+     */
+    class Publisher {
+      constructor() {
+        this.observers = []
+        console.log('publisher is created');
+      };
+      addObserver(observer) {
+        this.observers.push(observer)
+        console.log('publisher add observer');
+      };
+      notificate() {
+        console.log('Publisher.notify invoked');
+        this.observers.forEach(item => {
+          item.update(this)
+        })
+        console.log('publisher notification');
+      }
+    }
+    /**
+     * @description: 需求发布者
+     * @param {*}
+     * @return {*}
+     */
+    class PrdPublisher extends Publisher {
+      constructor() {
+        super()
+        this.prdState = null
+        this.observers = []
+        console.log('PrdPublisher created');
+      }
+
+      getState() {
+        console.log('PrdPublisher.getState invoked');
+        return this.prdState
+      }
+
+      setState(state) {
+        console.log('PrdPublisher.setState invoked');
+        this.prdState = state
+        this.notificate()
+      }
+    }
+
+    /**
+     * @description: 订阅者
+     * @param {*}
+     * @return {*}
+     */
+    class Observer {
+      constructor() {
+        console.log('Observer is create');
+      };
+      update(str) {
+        console.log('receive msg');
+      }
+    }
+
+    class DeveloperObserver extends Observer {
+      constructor() {
+        super()
+        this.prdState = {}
+        console.log('developerObserver created');
+      }
+      update(publisher) {
+        console.log('DeveloperObserver.update invoked');
+        this.prdState = publisher.getState()
+        this.work()
+      }
+      work() {
+        const prd = this.prdState
+        console.log('996 begins...');
+      }
+    }
+  </script>
+</body>
+
+</html>

@@ -1,0 +1,58 @@
+<!--
+ * @Author: your name
+ * @Date: 2020-12-16 21:58:19
+ * @LastEditTime: 2020-12-16 22:03:21
+ * @LastEditors: your name
+ * @Description: In User Settings Edit
+ * @FilePath: /designMode/策略模式.html
+-->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+
+
+  <script>
+    /**
+     * @description: if else 硬怼
+     * @param {*} a
+     * @return {*}
+     */
+    function type(a) {
+      if (a === 'a') {
+        console.log('...');
+      }
+      if (a === 'b') {
+        console.log('...');
+      }
+      if (a === 'c') {
+        console.log('...');
+      }
+    }
+    /**
+     * @description:使用设计模式 
+     * @param {*}
+     * @return {*}
+     */
+    let preType = {
+      aFun: function () {
+        console.log('a');
+      },
+      bFun: function () {
+        console.log('b');
+      }
+      //...
+    }
+    preType.newD = function () {
+      console.log('d');
+    }
+  </script>
+</body>
+
+</html>

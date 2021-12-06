@@ -1,0 +1,35 @@
+<!--
+ * @Autor: GeekMzy
+ * @Date: 2021-06-23 09:46:03
+ * @LastEditors: GeekMzy
+ * @LastEditTime: 2021-07-01 11:06:22
+ * @FilePath: \test\36js\3.数组去重.html
+-->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+
+  <div id="res">
+
+  </div>
+  <script>
+    function unique(arr) {
+      var res = arr.filter((item, index, array) => {
+        return array.indexOf(item === index)
+      })
+      return res
+    }
+
+    var unique = arr => [...new Set(arr)]
+  </script>
+</body>
+
+</html>

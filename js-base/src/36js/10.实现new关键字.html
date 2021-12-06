@@ -1,0 +1,37 @@
+<!--
+ * @Autor: GeekMzy
+ * @Date: 2021-06-23 09:45:44
+ * @LastEditors: GeekMzy
+ * @LastEditTime: 2021-06-24 10:29:16
+ * @FilePath: \test\36js\10.实现new关键字.html
+-->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+
+  <div id="res">
+
+  </div>
+  <script>
+    function objectFactory() {
+      var obj = new Object()
+      Constructor = [].shift.call(arguments);
+      console.log('Constructor', Constructor);
+      obj.__proto__ = Constructor.prototype;
+      var ret = Constructor.apply(obj, arguments);
+
+      // ret || obj 这里这么写考虑了构造函数显示返回 null 的情况
+      return typeof ret === 'object' ? ret || obj : obj;
+    };
+  </script>
+</body>
+
+</html>
