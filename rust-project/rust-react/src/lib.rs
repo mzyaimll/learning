@@ -2,8 +2,8 @@
  * @Autor: GeekMzy
  * @Date: 2021-12-06 10:34:39
  * @LastEditors: GeekMzy
- * @LastEditTime: 2021-12-06 10:39:54
- * @FilePath: \gitproject\rust-comp\src\lib.rs
+ * @LastEditTime: 2021-12-06 17:32:43
+ * @FilePath: \rust-react\src\lib.rs
  */
 use wasm_bindgen::prelude::*;
 
@@ -19,5 +19,5 @@ pub fn big_computation() {
 
 #[wasm_bindgen]
 pub fn welcome(name: &str) {
-    alert(&format!("Hi 我是{}",name))
+    alert(&format!("Hi 我是{}", name))
 }

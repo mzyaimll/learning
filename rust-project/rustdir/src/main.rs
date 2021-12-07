@@ -1,17 +1,17 @@
 /*
  * @Autor: GeekMzy
- * @Date: 2021-12-01 11:34:48
+ * @Date: 2021-12-07 16:21:53
  * @LastEditors: GeekMzy
- * @LastEditTime: 2021-12-02 10:00:17
+ * @LastEditTime: 2021-12-07 17:27:19
  * @FilePath: \rustdir\src\main.rs
  */
-use rand::Rng;
-use std::cmp::Ordering;
-use std::io;
 
-fn main() {
-    let mut a = 5;
-    while a != 0 {
-        a = a - 1
-    }
+enum Option<T> {
+  Some(T),
+  None,
+}
+pub fn main() {
+  let some_number = Some(5);
+  let some_string = Some("a string");
+  let absent_number: Option<i32> = None;
 }
