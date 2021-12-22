@@ -2,7 +2,7 @@
  * @Autor: GeekMzy
  * @Date: 2021-12-21 14:58:01
  * @LastEditors: GeekMzy
- * @LastEditTime: 2021-12-21 16:02:51
+ * @LastEditTime: 2021-12-21 16:19:34
  * @FilePath: \nodeProject\nest1\src\cats\cats.controller.ts
  */
 import {
@@ -15,18 +15,21 @@ import {
   Put,
   Query,
 } from '@nestjs/common';
+import { CatsService } from './cats.service';
 import { CreateCatDto, ListAllEntities, UpdateCatDto } from './dto/index';
+import { Cat } from './interfaces/Cat.interface';
 
 @Controller('cats')
 export class CatsController {
+  constructor(private catService: CatsService) {}
   @Post()
   create(@Body() createCatDto: CreateCatDto) {
-    return `this action add a new cat`;
+    this.catService.create(createCatDto);
   }
 
   @Get()
-  findAll(@Query() query: ListAllEntities) {
-    return `this action returns all cats (limit: ${query} items)`;
+  async findAll(): Promise<Cat[]> {
+    return this.catService.findAll();
   }
 
   @Get(':id')
