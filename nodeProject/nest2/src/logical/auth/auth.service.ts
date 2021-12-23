@@ -2,8 +2,9 @@
  * @Autor: GeekMzy
  * @Date: 2021-12-22 11:08:58
  * @LastEditors: GeekMzy
- * @LastEditTime: 2021-12-23 15:35:25
- * @FilePath: \nest2\src\logical\auth\auth.service.ts
+ * @LastEditTime: 2021-12-23 16:55:49
+ * @FilePath: \learning\nodeProject\nest2\src\logical\auth\auth.service.ts
+ * @Author: desktop-1llkr2o
  */
 // src/logical/auth/auth.service.ts
 import { Injectable } from '@nestjs/common';
@@ -61,7 +62,6 @@ export class AuthService {
     try {
       const token = this.jwtService.sign(payload);
       const redis = await RedisInstance.initRedis('auth.certificate', 0);
-      console.log(user, 'user----------------------');
       await redis.setex(`${user.userId}-${user.username}`, 300, `${token}`);
       return {
         code: 200,
