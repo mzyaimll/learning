@@ -2,15 +2,15 @@
  * @Autor: GeekMzy
  * @Date: 2021-12-22 11:08:58
  * @LastEditors: GeekMzy
- * @LastEditTime: 2021-12-22 11:41:08
- * @FilePath: \nodeProject\nest2\src\logical\auth\auth.service.ts
+ * @LastEditTime: 2021-12-23 14:53:51
+ * @FilePath: \nest2\src\logical\auth\auth.service.ts
  */
 // src/logical/auth/auth.service.ts
 import { Injectable } from '@nestjs/common';
 import { UserService } from '../user/user.service';
 import { JwtService } from '@nestjs/jwt';
 import { encryptPassword } from '../../utils/cryptogram';
-
+import { RedisInstance } from '../../../database/redis';
 @Injectable()
 export class AuthService {
   constructor(
@@ -51,14 +51,16 @@ export class AuthService {
   // JWT验证 - Step 3: 处理 jwt 签证
   async certificate(user: any) {
     const payload = {
-      username: user.username,
-      sub: user.userId,
+      username: user.accountName,
+      sub: user.id,
       realName: user.realName,
       role: user.role,
     };
     console.log('JWT验证 - Step 3: 处理 jwt 签证');
     try {
       const token = this.jwtService.sign(payload);
+      const redis = await RedisInstance.initRedis('auth.certificate', 0);
+      await redis.setex(`${user.id}-${user.username}`, 300, `${token}`);
       return {
         code: 200,
         data: {
