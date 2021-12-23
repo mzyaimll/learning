@@ -2,7 +2,7 @@
  * @Autor: GeekMzy
  * @Date: 2021-12-22 11:08:58
  * @LastEditors: GeekMzy
- * @LastEditTime: 2021-12-23 14:53:51
+ * @LastEditTime: 2021-12-23 15:35:25
  * @FilePath: \nest2\src\logical\auth\auth.service.ts
  */
 // src/logical/auth/auth.service.ts
@@ -21,10 +21,11 @@ export class AuthService {
   // JWT验证 - Step 2: 校验用户信息
   async validateUser(username: string, password: string): Promise<any> {
     console.log('JWT验证 - Step 2: 校验用户信息');
-    const user = await this.usersService.findOne(username);
+    const res = await this.usersService.findOne(username);
+    const user = res.data.user;
     if (user) {
-      const hashedPassword = user.data.user.password;
-      const salt = user.data.user.salt;
+      const hashedPassword = user.password;
+      const salt = user.salt;
       // 通过密码盐，加密传参，再与数据库里的比较，判断是否相等
       const hashPassword = encryptPassword(password, salt);
       if (hashedPassword === hashPassword) {
@@ -51,8 +52,8 @@ export class AuthService {
   // JWT验证 - Step 3: 处理 jwt 签证
   async certificate(user: any) {
     const payload = {
-      username: user.accountName,
-      sub: user.id,
+      username: user.username,
+      sub: user.userId,
       realName: user.realName,
       role: user.role,
     };
@@ -60,7 +61,8 @@ export class AuthService {
     try {
       const token = this.jwtService.sign(payload);
       const redis = await RedisInstance.initRedis('auth.certificate', 0);
-      await redis.setex(`${user.id}-${user.username}`, 300, `${token}`);
+      console.log(user, 'user----------------------');
+      await redis.setex(`${user.userId}-${user.username}`, 300, `${token}`);
       return {
         code: 200,
         data: {

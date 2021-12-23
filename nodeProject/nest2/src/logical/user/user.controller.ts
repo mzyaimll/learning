@@ -2,7 +2,7 @@
  * @Autor: GeekMzy
  * @Date: 2021-12-21 16:32:10
  * @LastEditors: GeekMzy
- * @LastEditTime: 2021-12-23 11:22:47
+ * @LastEditTime: 2021-12-23 15:26:57
  * @FilePath: \nest2\src\logical\user\user.controller.ts
  */
 import { Controller, Post, Body, UseGuards, UsePipes } from '@nestjs/common';
