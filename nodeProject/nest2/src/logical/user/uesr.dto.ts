@@ -2,18 +2,12 @@
  * @Autor: GeekMzy
  * @Date: 2021-12-23 09:35:20
  * @LastEditors: GeekMzy
- * @LastEditTime: 2021-12-23 11:29:32
+ * @LastEditTime: 2021-12-23 11:31:09
  * @FilePath: \nest2\src\logical\user\uesr.dto.ts
  */
 // src/logical/user/user.dto.ts
 import { IsNotEmpty, IsNumber, IsString } from 'class-validator';
 import { ApiProperty, ApiPropertyOptional } from '@nestjs/swagger';
-/**
- * @description: 登录接口dto
- * @event:
- * @param {*} params {*}
- * @return {*}
- **/
 export class LoginDTO {
   @ApiProperty({ description: '用户名', example: 'koa2' })
   @IsNotEmpty({ message: '用户名不能为空' })
