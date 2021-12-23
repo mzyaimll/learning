@@ -2,8 +2,8 @@
  * @Autor: GeekMzy
  * @Date: 2021-12-22 17:03:14
  * @LastEditors: GeekMzy
- * @LastEditTime: 2021-12-22 17:03:20
- * @FilePath: \nodeProject\nest2\src\filter\any-exception.filter.ts
+ * @LastEditTime: 2021-12-23 09:52:18
+ * @FilePath: \nest2\src\filter\any-exception.filter.ts
  */
 // src/filter/any-exception.filter.ts
 /**
@@ -40,7 +40,7 @@ export class AllExceptionsFilter implements ExceptionFilter {
     Logger.error(logFormat);
     response.status(status).json({
       statusCode: status,
-      msg: `Service Error: ${exception}`,
+      msg: `${exception}`,
     });
   }
 }

@@ -2,11 +2,13 @@
  * @Autor: GeekMzy
  * @Date: 2021-12-21 16:31:03
  * @LastEditors: GeekMzy
- * @LastEditTime: 2021-12-22 11:07:47
- * @FilePath: \nodeProject\nest2\src\logical\user\user.service.ts
+ * @LastEditTime: 2021-12-23 09:48:23
+ * @FilePath: \nest2\src\logical\user\user.service.ts
  */
-import { Injectable } from '@nestjs/common';
+import { Injectable, Post, UseGuards, UsePipes } from '@nestjs/common';
+import { AuthGuard } from '@nestjs/passport';
 import * as Sequelize from 'sequelize';
+import { ValidationPipe } from 'src/pipe/validation.pipe';
 import sequelize from '../../../database/sequelize';
 import { makeSalt, encryptPassword } from '../../utils/cryptogram';
 
