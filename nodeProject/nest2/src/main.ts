@@ -2,8 +2,8 @@
  * @Autor: GeekMzy
  * @Date: 2021-12-21 16:28:43
  * @LastEditors: GeekMzy
- * @LastEditTime: 2021-12-23 11:17:18
- * @FilePath: \nest2\src\main.ts
+ * @LastEditTime: 2021-12-24 11:32:46
+ * @FilePath: \learning\nodeProject\nest2\src\main.ts
  */
 import { NestFactory } from '@nestjs/core';
 import { AppModule } from './app.module';
@@ -22,10 +22,10 @@ async function bootstrap() {
   app.use(express.json()); // For parsing application/json
   app.use(express.urlencoded({ extended: true })); // For parsing application/x-www-form-urlencoded
   // 监听所有的请求路由，并打印日志
-  app.use(logger);
-  app.useGlobalInterceptors(new TransformInterceptor());
-  app.useGlobalFilters(new HttpExceptionFilter());
-  app.useGlobalFilters(new AllExceptionsFilter());
+  app.use(logger); //日志中间件
+  app.useGlobalInterceptors(new TransformInterceptor()); //全局拦截器
+  app.useGlobalFilters(new HttpExceptionFilter()); //http过滤器
+  app.useGlobalFilters(new AllExceptionsFilter()); //错误过滤器
 
   // 配置 Swagger
   const options = new DocumentBuilder()
