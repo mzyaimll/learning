@@ -2,7 +2,7 @@
  * @Autor: GeekMzy
  * @Date: 2022-03-02 16:58:43
  * @LastEditors: GeekMzy
- * @LastEditTime: 2022-03-02 17:34:26
+ * @LastEditTime: 2022-03-02 17:46:51
  * @FilePath: \rust-project\trait-test\src\main.rs
  * @Author: desktop-1llkr2o
  */
